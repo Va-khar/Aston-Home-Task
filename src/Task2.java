@@ -10,9 +10,9 @@ public class Task2 {
         int sum = a + b;
 
         if (sum >= 0) {
-            System.out.println("Сумма положительная = " + sum);
+            System.out.println("Сумма положительная");
         } else {
-            System.out.println("Сумма отрицательная =" + sum);
+            System.out.println("Сумма отрицательная");
         }
     }
 }

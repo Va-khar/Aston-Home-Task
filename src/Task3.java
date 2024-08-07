@@ -1,11 +1,10 @@
 public class Task3 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         printColor();
     }
-    public  static  void printColor(){
+    public  static  void printColor() {
         int value;
         value = 1647;
-
         if (value <= 0) {
             System.out.println("Красный");
         } else if (value > 0 && value <= 100) {

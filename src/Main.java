@@ -15,6 +15,9 @@ public class Main {
         Task11.recalNumber();
         Task12.multiSixMassiv();
         Task13.massivVertical();
+        int[] resultArray = Task14.arrayLength(5,10);
+        for (int i = 0; i < resultArray.length; i++) {
+            System.out.println(resultArray[i] + " ");
         }
     }
 }

@@ -1,3 +1,4 @@
+import static java.lang.invoke.MethodHandles.arrayLength;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +15,7 @@ public class Main {
         Task11.recalNumber();
         Task12.multiSixMassiv();
         Task13.massivVertical();
+        }
     }
 }
 

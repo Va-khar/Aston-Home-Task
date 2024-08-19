@@ -1,4 +1,4 @@
-public class EmloyeeOne {
+public class Employee {
     private String surname;
     private String name;
     private String patronymic;
@@ -8,7 +8,7 @@ public class EmloyeeOne {
     private int salary;
     private int age;
 
-    public EmloyeeOne(String surname, String name, String patronymic, String position, String email, String phone, int salary, int age) {
+    public Employee(String surname, String name, String patronymic, String position, String email, String phone, int salary, int age) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
@@ -30,16 +30,16 @@ public class EmloyeeOne {
                 "Возраст: " + age);
     }
 
-    public String toString() {
-        return  "Employee{" +
-                "surname='" + surname + '\'' +
-                ", name='" + name + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", position='" + position + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", salary=" + salary +
-                ", age=" + age +
-                '}';
+    public static void main(String[] args) {
+        Employee employee1 = new Employee(
+                "Vakhnin",
+                "Arkhip",
+                "Stepanovich",
+                "QA",
+                "arkhip97@yandex.ru",
+                "89774439972",
+                50000,
+                27);
+        employee1.Information();
     }
 }

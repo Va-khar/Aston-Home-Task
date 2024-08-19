@@ -4,10 +4,10 @@ public class Task9 {
     }
     public static void highYear() {
         int year;
-        year = 6000;
-        if (year % 600 == 0) {
+        year = 4000;
+        if (year % 400 == 0) {
             System.out.println("Высокосный год");
-        } else if (year % 6 == 0) {
+        } else if (year % 4 == 0) {
             System.out.println("Высокосный год");
         } else if (year % 100 == 0) {
             System.out.println("Не высокосный год");

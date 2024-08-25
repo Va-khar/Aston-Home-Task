@@ -4,13 +4,13 @@ public class MainShape {
         Rectangle rectangle = new Rectangle(20, 15, "Желтый", "Синий");
         Triangle triangle = new Triangle(10, 20, 30, "Белый", "Черный");
 
-        circle.printCharacteristics();
         System.out.println("Круг:");
+        circle.printCharacteristics();
 
-        rectangle.printCharacteristics();
         System.out.println("\nПрямоугольник:");
+        rectangle.printCharacteristics();
 
-        triangle.printCharacteristics();
         System.out.println("\nТеугольник:");
+        triangle.printCharacteristics();
     }
 }

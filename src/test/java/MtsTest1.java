@@ -8,16 +8,18 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class MtsTest1 {
     private WebDriver driver;
     private MtsPage mtsPage;
     private Actions action;
 
     @BeforeClass
-    public void setup() throws InterruptedException {
+    public void setup() {
         driver = new ChromeDriver();
         driver.get("https://mts.by");
-        Thread.sleep(5000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         mtsPage = new MtsPage(driver);
         mtsPage.acceptCookies();
         action = new Actions(driver);
@@ -32,7 +34,7 @@ public class MtsTest1 {
     }
 
     @Test(priority = 1)
-    public void checkServicesPlanPlaceholders() throws InterruptedException {
+    public void checkServicesPlanPlaceholders() {
         action.scrollToElement(driver.findElement(By.className("pay__partners")));
         action.moveToElement(driver.findElement(By.className("select__now"))).build().perform();
         // Проверить, что План Услуги Связи выбран по умолчанию
@@ -52,14 +54,12 @@ public class MtsTest1 {
     }
 
     @Test(priority = 2)
-    public void checkHomeInternetPlanPlaceholders() throws InterruptedException {
+    public void checkHomeInternetPlanPlaceholders() {
         // Выбор "Домашний интернет" из списка
         action.moveToElement(driver.findElement(By.className("select__now"))).build().perform();
         driver.findElement(By.xpath("//span[@class='select__now']")).click();
-        Thread.sleep(2000);
         //Нажимаем на кнопку услуги Домашний интернет
         driver.findElement(By.xpath("//li[@class='select__item']/p[text()='Домашний интернет']")).click();
-        Thread.sleep(2000);
         // Проверка правильности значения placeholder 'Номер абонента'
         Assert.assertTrue(mtsPage.isNumberInternetHomePlaceholderDisplayed(), "Плейсхолдер 'Номер абонента' присутствует.");
         // Проверка правильности значения placeholder 'Сумма'
@@ -69,14 +69,12 @@ public class MtsTest1 {
     }
 
     @Test(priority = 3)
-    public void checkInstalmentPlanPlaceholders() throws InterruptedException {
+    public void checkInstalmentPlanPlaceholders() {
         // Выбор "Рассрочка" из списка
         action.moveToElement(driver.findElement(By.className("select__now"))).build().perform();
         driver.findElement(By.xpath("//span[@class='select__now']")).click();
-        Thread.sleep(2000);
         //Нажимаем на кнопку услуги Рассрочка
         driver.findElement(By.xpath("//li[@class='select__item']/p[text()='Рассрочка']")).click();
-        Thread.sleep(2000);
         // Проверка правильности значения placeholder 'Номер счета на 44'
         Assert.assertTrue(mtsPage.isNumberAccountPlaceholderDisplayed(), "Плейсхолдер 'Номер счета на 44' присутствует");
         // Проверка правильности значения placeholder 'Сумма'
@@ -86,14 +84,12 @@ public class MtsTest1 {
     }
 
     @Test(priority = 4)
-    public void checkArrearsPlanPlaceholders() throws InterruptedException {
+    public void checkArrearsPlanPlaceholders() {
         // Выбор "Задолженность" из списка
         action.moveToElement(driver.findElement(By.className("select__now"))).build().perform();
         driver.findElement(By.xpath("//span[@class='select__now']")).click();
-        Thread.sleep(2000);
         //Нажимаем на кнопку услуги Задолженность
         driver.findElement(By.xpath("//li[@class='select__item']/p[text()='Задолженность']")).click();
-        Thread.sleep(2000);
         // Проверка правильности значения placeholder 'Номер счета на 2073'
         Assert.assertTrue(mtsPage.isNumberAccountArrearsPlaceholderDisplayed(), "Плейсхолдер 'Номер счета на 2073' присутствует");
         // Проверка правильности значения placeholder 'Сумма'

@@ -1,9 +1,14 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class MtsPage {
     WebDriver driver;
@@ -79,13 +84,14 @@ public class MtsPage {
     }
 
     public void acceptCookies() {
+        WebElement cookieButton = driver.findElement(By.id("cookie-agree"));
         try {
-            WebElement acceptCookiesButton = driver.findElement(By.xpath("/html/body/div[6]/main/div/div[2]/div/div[2]/button[3]"));
-            acceptCookiesButton.click();
-            System.out.println("Cookies приняты");
-        } catch (Exception e) {
-            System.err.println("Кнопка принятия cookie не найдена или не может быть нажата");
+            new WebDriverWait(driver, Duration.ofSeconds(10))
+                    .until(ExpectedConditions.elementToBeClickable(cookieButton)).click();
+        } catch (TimeoutException e) {
+            System.out.println("Куки не отобразились");
         }
+
     }
 
     public void clickContinueButton() {

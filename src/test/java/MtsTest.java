@@ -3,6 +3,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -10,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class MtsTest1 {
+public class MtsTest {
     private WebDriver driver;
     private MtsPage mtsPage;
     private Actions action;
@@ -91,6 +93,7 @@ public class MtsTest1 {
         //Нажимаем на кнопку услуги Задолженность
         driver.findElement(By.xpath("//li[@class='select__item']/p[text()='Задолженность']")).click();
         // Проверка правильности значения placeholder 'Номер счета на 2073'
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[@id='score-arrears'][@placeholder='Номер счета на 2073']"))));
         Assert.assertTrue(mtsPage.isNumberAccountArrearsPlaceholderDisplayed(), "Плейсхолдер 'Номер счета на 2073' присутствует");
         // Проверка правильности значения placeholder 'Сумма'
         Assert.assertTrue(mtsPage.isSummaArrearsPlaceholderDisplayed(), "Плейсхолдер 'Сумма' присутствует");

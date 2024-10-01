@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class MtsTest2 {
+public class MtsHomeTest {
     private WebDriver driver;
     private MtsPage mtsPage;
 
